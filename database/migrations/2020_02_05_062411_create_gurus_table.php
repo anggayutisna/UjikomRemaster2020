@@ -22,8 +22,10 @@ class CreateGurusTable extends Migration
             $table->string('tempat_tinggal');
             $table->date('tanggal_lahir');
             $table->integer('no_telpon');
-            $table->string('email');
-            $table->string('password');
+            $table->unsignedBigInteger('email_id');
+            $table->foreign('email_id')->references('id')->on('users')->onDelete('CASCADE');
+            $table->unsignedBigInteger('password_id');
+            $table->foreign('password_id')->references('id')->on('users')->onDelete('CASCADE');
             $table->timestamps();
         });
     }

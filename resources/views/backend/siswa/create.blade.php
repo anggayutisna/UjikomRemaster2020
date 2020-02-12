@@ -56,15 +56,23 @@
     </div>
     <div class="form-group">
         <label for="">Email</label>
-         @foreach($user as $data)
-        <input class="form-control" type="email" name="email">
-        @endforeach
+        <select name="email" class="form-control">
+    @foreach($user as $data)
+        <option value="{{ $data->id }}">
+            {{ $data->email }}
+        </option>
+    @endforeach
+        </select>
     </div>
     <div class="form-group">
-        <label for="">Password</label>
-        @foreach($user as $data)
-        <input class="form-control" type="password" name="password">
-        @endforeach
+        <label for="">Email</label>
+        <select name="password" class="form-control">
+    @foreach($user as $data)
+        <option value="{{ $data->id }}">
+            {{ $data->password }}
+        </option>
+    @endforeach
+        </select>
     </div>
     <div class="form-group">
         <button type="submit" class="btn btn-outline-info">

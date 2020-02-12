@@ -85,7 +85,25 @@
           </div>
           <div class="col-lg-3 text-right">
           <a href="{{url('halaman_login')}}" class="small btn btn-primary px-4 py-2 rounded-0"><span class="icon-unlock-alt"></span> Masuk</a>
-             </div>
+
+          <a class="nav-link" data-toggle="dropdown" href="#">
+          <i></i>
+
+
+        </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                    </a>
+           <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+
+        </div>
 
         </div>
       </div>

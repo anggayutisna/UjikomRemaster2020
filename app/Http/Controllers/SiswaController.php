@@ -55,10 +55,10 @@ class SiswaController extends Controller
         $siswa->tempat_tinggal = $request->tempat_tinggal;
         $siswa->tanggal_lahir = $request->tanggal_lahir;
         $siswa->no_telpon = $request->no_telpon;
-        $siswa->email_id = $request->user;
-        $siswa->password_id = $request->user;
         $siswa->jurusan_id = $request->jurusan;
         $siswa->kelas_id = $request->kelas;
+        $siswa->email_id = $request->email;
+        $siswa->password_id = $request->password;
 
         if ($request->hasFile('foto')) {
             $file = $request->file('foto');
@@ -118,6 +118,12 @@ class SiswaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $siswa = Siswa::findOrFail($id);
+        $siswa->delete();
+        Session::flash("flash_notification", [
+            "level" => "danger",
+            "message" => "Berhasil menghapus Siswa <b>$siswa->nama_siswa</b>!"
+            ]);
+        return redirect()->route('siswa.index');
     }
 }

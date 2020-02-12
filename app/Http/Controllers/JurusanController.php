@@ -91,6 +91,12 @@ class JurusanController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $jurusan = Jurusan::findOrFail($id);
+        $jurusan->delete();
+        Session::flash("flash_notification", [
+            "level" => "danger",
+            "message" => "Berhasil menghapus jurusan <b>$jurusan->nama_jurusan</b>!"
+            ]);
+        return redirect()->route('jurusan.index');
     }
 }

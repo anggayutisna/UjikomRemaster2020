@@ -50,7 +50,7 @@ Route::get('/penilaian', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/admin', 'HomeController@index')->name('home');
 
 
 
@@ -58,7 +58,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 // Backend atau Admin
 
 Route::group(
-    ['prefix' => 'admin', 'middleware' => ['auth']],
+    ['middleware' => ['auth','role:admin']],
     function () {
         Route::get('/admin', function () {
             return view('backend.index');

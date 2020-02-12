@@ -51,7 +51,7 @@
       <!-- Notifications Dropdown Menu -->
         <li class="nav-item">
         <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="fas fa-th-large"></i>
+          <i></i>
           {{ Auth::user()->name }}
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
@@ -147,7 +147,10 @@
     <div class="content-header">
       <div class="container-fluid">
 
+        @include('layouts.flash')
               @yield('content')
+
+
           </div><!-- /.col -->
 
         </div><!-- /.row -->

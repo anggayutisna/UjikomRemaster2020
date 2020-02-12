@@ -94,6 +94,10 @@ class MapelController extends Controller
     {
         $mapel = Mapel::findOrFail($id);
         $mapel->delete();
+        Session::flash("flash_notification", [
+            "level" => "danger",
+            "message" => "Berhasil menghapus mapel <b>$mapel->mata_pelajaran</b>!"
+            ]);
         return redirect()->route('mapel.index');
     }
 }

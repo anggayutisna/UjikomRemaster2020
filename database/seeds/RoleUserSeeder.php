@@ -43,18 +43,13 @@ class RoleUserSeeder extends Seeder
 
         // Create User Admin role
 
-        $admin = new User;
-        $admin->name = "Admin";
-        $admin->email = "admin@gmail.com";
-        $admin->password = bcrypt("admin2020");
-        $admin->save();
-        $admin->attachRole("admin");
+        // $admin = new User;
+        // $admin->name = "Admin";
+        // $admin->email = "admin@gmail.com";
+        // $admin->password = bcrypt("admin2020");
+        // $admin->save();
+        // $admin->attachRole("admin");
 
-        $admin = new User;
-        $admin->name = "Angga Yutisna";
-        $admin->email = "anggayutisna@gmail.com";
-        $admin->password = bcrypt("angga2020");
-        $admin->save();
-        $admin->attachRole("siswa");
+
     }
 }

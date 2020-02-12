@@ -28,8 +28,6 @@ class KelasController extends Controller
     public function create()
     {
 
-        $kelas = Kelas::all();
-        return view('backend.kelas.create');
     }
 
     /**
@@ -94,6 +92,10 @@ class KelasController extends Controller
     {
         $kelas = Kelas::findOrFail($id);
         $kelas->delete();
+        Session::flash("flash_notification", [
+            "level" => "danger",
+            "message" => "Berhasil menghapus kelas <b>$kelas->nama_kelas</b>!"
+            ]);
         return redirect()->route('kelas.index');
     }
 }
