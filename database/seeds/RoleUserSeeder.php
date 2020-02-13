@@ -43,12 +43,6 @@ class RoleUserSeeder extends Seeder
 
         // Create User Admin role
 
-        $guestRole = new Role;
-
-        $guestRole->name = "guest";
-        $guestRole->display_name = "guest";
-        $guestRole->description = "guest Role";
-        $guestRole->save();
 
         // $admin = new User;
         // $admin->name = "Admin";
