@@ -79,6 +79,11 @@
                 <li>
                 <a href="{{url('tentang')}}" class="nav-link text-left">About</a>
                   </li>
+                  @if(Auth::user()->hasRole('admin'))
+                  <li>
+                  <a href="{{url('admin/siswa')}}">Admin</a>
+                  </li>
+                  @endif
               </ul>                                                                                                                                                                                                                                                                                          </ul>
             </nav>
 
