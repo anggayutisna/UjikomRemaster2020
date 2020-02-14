@@ -76,41 +76,57 @@
                 {{-- <li>
                   <a href="{{url('administrasi')}}" class="nav-link text-left">Administrasi</a>
                 </li> --}}
-                <li>
-                <a href="{{url('tentang')}}" class="nav-link text-left">About</a>
-                  </li>
-                  @if(Auth::user()->hasRole('admin'))
+
+                  @if(auth()->check()  &&  Auth::user()->hasRole('admin'))
                   <li>
                   <a href="{{url('admin/siswa')}}">Admin</a>
                   </li>
                   @endif
+                  @if(auth()->check()  &&  Auth::user()->hasRole('siswa'))
+                  <li>
+                  <a href="{{url('/siswa')}}">Siswa</a>
+                  </li>
+                  @endif
+                  <li>
+                <a href="{{url('tentang')}}" class="nav-link text-left">About</a>
+                  </li>
               </ul>                                                                                                                                                                                                                                                                                          </ul>
             </nav>
 
           </div>
-          <div class="col-lg-3 text-right">
+         <div class="col-lg-3 text-right">
+              @guest
           <a href="{{url('halaman_login')}}" class="small btn btn-primary px-4 py-2 rounded-0"><span class="icon-unlock-alt"></span> Masuk</a>
+            @else
 
-          <a class="nav-link" data-toggle="dropdown" href="#">
-          <i></i>
-
-
-        </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                    </a>
-           <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                  <a id="navbarDropdown" class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->email }} <span class="caret"></span>
+                                </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                    @if (auth()->check()  &&  Auth::user()->hasRole('siswa'))
+                                    <a class="dropdown-item" href="{{ url('profile')}}">
+                                       Profile
                                     </a>
+                                    @endif
+                    @if (auth()->check()  &&  Auth::user()->hasRole('guru'))
+                                    <a class="dropdown-item" href="{{ url('profile')}}">
+                                       Profile
+                                    </a>
+                                    @endif
+                    <a class="dropdown-item" href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }}
+                    </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
+                                </div>
+        </a>
 
         </div>
-
-        </div>
+        @endguest
       </div>
 
     </header>

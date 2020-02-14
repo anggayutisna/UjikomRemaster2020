@@ -103,32 +103,4 @@
         </div>
       </div>
     </div>
-
-
-    <div class="site-section">
-      <div class="container">
-
-
-
-
-          </div>
-        </div>
-
-
-
-      </div>
-    </div>
-
-
-
-
-
-
-
-
-
-
-        </div>
-      </div>
-    </div>
     @endsection

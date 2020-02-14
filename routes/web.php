@@ -35,30 +35,41 @@ Route::get('/login_siswa', function () {
     return view('frontend.Login.loginsiswa');
 });
 
-
-Route::get('/siswa', function () {
-    return view('frontend.Siswa.index');
-});
-
-Route::get('/guru', function () {
-    return view('frontend.Guru.index');
-});
-
 Route::get('/penilaian', function () {
     return view('frontend.Guru.penilaian');
 });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', function(){
+    return view('frontend.home');
+});
 
+    //Hak Akses Web GURU DAN SISWA
 
+Route::group(
+    ['middleware' => ['role:siswa']],
+    function () {
+        Route::get('/siswa', function () {
+            return view('frontend.Siswa.index');
+        });
+    }
+);
+
+Route::group(
+    ['middleware' => ['role:guru']],
+    function(){
+        Route::get('/guru', function () {
+            return view('frontend.Guru.index');
+        });
+    }
+);
 
 
 // Backend atau Admin
 
 Route::group(
-    ['prefix' => 'admin', 'middleware' => ['auth']],
+    ['prefix' => 'admin', 'middleware' => ['role:admin']],
     function () {
         Route::get('/admin', function () {
             return view('backend.index');

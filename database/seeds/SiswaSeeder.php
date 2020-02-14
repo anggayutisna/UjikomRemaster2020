@@ -22,7 +22,7 @@ class SiswaSeeder extends Seeder
         $siswa->save();
         $siswa->attachRole("siswa");
 
-        $siswa = new Siswa;
+
 
     }
 }
