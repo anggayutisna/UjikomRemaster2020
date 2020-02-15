@@ -20,6 +20,8 @@ class CreateNilaisTable extends Migration
             $table->foreign('mapel_id')->references('id')->on('mapels')->onDelete('CASCADE');
             $table->unsignedBigInteger('siswa_id');
             $table->foreign('siswa_id')->references('id')->on('siswas')->onDelete('CASCADE');
+            $table->unsignedBigInteger('kategorinilai_id');
+            $table->foreign('kategorinilai_id')->references('id')->on('kategori_nilais')->onDelete('CASCADE');
             $table->timestamps();
         });
     }

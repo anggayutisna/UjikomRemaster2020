@@ -79,14 +79,17 @@
 
                   @if(auth()->check()  &&  Auth::user()->hasRole('admin'))
                   <li>
-                  <a href="{{url('admin/siswa')}}">Admin</a>
+                  <a href="{{url('admin/')}}">Admin</a>
                   </li>
                   @endif
+
+                  @foreach ($siswa as $siswas )
                   @if(auth()->check()  &&  Auth::user()->hasRole('siswa'))
                   <li>
-                  <a href="{{url('/siswa')}}">Siswa</a>
+                  <a href="{{ route('siswa.nilai', $siswas->nama_siswa) }}">Siswa</a>
                   </li>
                   @endif
+                  @endforeach
                   <li>
                 <a href="{{url('tentang')}}" class="nav-link text-left">About</a>
                   </li>

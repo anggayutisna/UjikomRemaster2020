@@ -15,12 +15,7 @@ class CreateKategoriNilaisTable extends Migration
     {
         Schema::create('kategori_nilais', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('uh1');
-            $table->string('uh2');
-            $table->string('uh3');
-            $table->string('uh4');
-            $table->string('uh5');
-            $table->string('uh6');
+            $table->string('kategori_nilai');
             $table->timestamps();
         });
     }

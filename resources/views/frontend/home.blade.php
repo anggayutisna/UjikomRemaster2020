@@ -24,6 +24,7 @@
         </div>
       </div>
 
+
       <div class="intro-section" style="background-image: url('assets/frontend/images/siswa3.JPG');">
         <div class="container">
           <div class="row align-items-center">

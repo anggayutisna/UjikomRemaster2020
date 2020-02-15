@@ -1,5 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FrontendController;
+use App\Siswa;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -47,14 +50,7 @@ Route::get('/home', function(){
 
     //Hak Akses Web GURU DAN SISWA
 
-Route::group(
-    ['middleware' => ['role:siswa']],
-    function () {
-        Route::get('/siswa', function () {
-            return view('frontend.Siswa.index');
-        });
-    }
-);
+
 
 Route::group(
     ['middleware' => ['role:guru']],
@@ -67,6 +63,10 @@ Route::group(
 
 
 // Backend atau Admin
+
+Route::get('/admin', function () {
+    return view('backend.index');
+});
 
 Route::group(
     ['prefix' => 'admin', 'middleware' => ['role:admin']],
@@ -81,3 +81,7 @@ Route::group(
         Route::resource('siswa','SiswaController');
     }
 );
+
+
+Route::get('/{siswa}', 'FrontendController@siswa')->name('siswa.nilai');
+Route::get('/', 'FrontendController@index')->name('lihatdata');
